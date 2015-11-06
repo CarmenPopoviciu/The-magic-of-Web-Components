@@ -1,0 +1,24 @@
+{
+  "name": "The-magic-of-Web-Components",
+  "version": "1.0.0",
+  "description": "Slides for Domcode talk about Web Components",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CarmenPopoviciu/The-magic-of-Web-Components.git"
+  },
+  "keywords": [
+    "web",
+    "components"
+  ],
+  "devDependencies": {
+    "gulp": "~3.8.9",
+    "gulp-connect": "~2.0.6",
+    "gulp-open": "~0.3.0"
+  },
+  "dependencies": {
+    "reveal.js": "^3.1.0"
+  }
+}
