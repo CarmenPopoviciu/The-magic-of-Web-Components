@@ -42,9 +42,9 @@
         function makeShadowTree(storyList)
         {
             var root = storyList.createShadowRoot();
-            <!--root.appendChild(createStyle());-->
+            root.appendChild(createStyle());
             root.appendChild(createStoryGroup('breaking', 'breaking'));
-            <!--root.appendChild(createStoryGroup('other', ''));-->
+            root.appendChild(createStoryGroup('other', ''));
         }
 
         document.addEventListener('DOMContentLoaded', function() {
