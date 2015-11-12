@@ -2,7 +2,7 @@ var gulp = require('gulp');
 var connect = require('gulp-connect');
 var open = require("gulp-open");
 
-var PORT_NUMBER = 9003;
+var PORT_NUMBER = 9005;
 
 gulp.task('html', function () {
     gulp.src('./slides/*.html')
@@ -26,7 +26,7 @@ gulp.task('connect', function() {
     connect.server({
         root: '.',
         port: PORT_NUMBER,
-        livereload: true
+        livereload: false
     });
 });
 

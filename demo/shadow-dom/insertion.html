@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Magic of Web Components - Shadow Dom Examples</title>
+</head>
+<body>
+    <h1>Shadow Dom Examples</h1>
+    <div>
+        <ul class="stories">
+            <li>There! You see? I'm an ugly, horrible, grouchy old man!</a></li>
+            <li>Jumping hogtoads!</li>
+            <li slot="arthur">There, now you see? I'm not a squirrel. I'm a boy.</li>
+            <li>Oh, no, no, no, no. Never touch the stuff.</li>
+            <li>[teaching Arthur to swim as a fish] Now, there are lots of ups and downs like, like a... like a helicopter.</li>
+            <li slot="arthur">Then he must stay out every night.</li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        function createStoryGroup(name, slotName) {
+            var group = document.createElement('div');
+            // Empty string in slot name attribute or absence thereof work the same, so no need for special handling.
+            group.innerHTML = '<h1>'+ name + '</h1><ul><slot name="' + slotName + '"></slot></ul>';
+            return group;
+        }
+
+        function makeShadowTree(storyList) {
+            var root;
+            if(storyList.attachShadow) {
+                root = storyList.attachShadow({mode: 'open'});
+            } else {
+                root = storyList.createShadowRoot();
+            }
+            root.appendChild(createStoryGroup('Arthur', 'arthur'));
+            root.appendChild(createStoryGroup('Merlin', ''));
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            [].forEach.call(document.querySelectorAll('ul.stories'), makeShadowTree);
+        });
+    </script>
+</body>
+</html>
