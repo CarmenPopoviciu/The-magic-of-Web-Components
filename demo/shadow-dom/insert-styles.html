@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Magic of Web Components - Shadow Dom Examples</title>
+</head>
+<style>
+    .shadow-dom > div {
+        border: solid 3px red;
+    }
+    
+    :root {
+        --text-color: blue;
+    }
+   
+</style>
+<body>
+<h1>Shadow Dom Examples</h1>
+<div class="shadow-dom">
+</div>
+
+<script>
+    function createConversation() {
+        var group = document.createElement('div');
+        // Empty string in slot name attribute or absence thereof work the same, so no need for special handling.
+        group.innerHTML = '<span class="merlin">Merlin:</span> Why, they might even make a motion picture about you.<br />' +
+                '<span class="arthur">Arthur:</span> Motion picture?<br />' +
+                '<span class="merlin">Merlin:</span> Oh. Heh-heh-heh, uh, well, uh, that\'s something like television... heh-heh... without commercials.';
+        return group;
+    }
+
+    function createStyle() {
+        var style = document.createElement('style');
+        style.textContent = 'span.merlin { color: var(--text-color); ;font-size: 20px; }' +
+                'span.arthur { color: red ;font-size: 20px; }';
+        return style;
+    }
+
+    function makeShadowTree(shadow) {
+        var root;
+        if(shadow.attachShadow) {
+            root = shadow.attachShadow({mode: 'open'});
+        } else {
+            root = shadow.createShadowRoot();
+        }
+        root.appendChild(createStyle());
+        root.appendChild(createConversation());
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        [].forEach.call(document.querySelectorAll('.shadow-dom'), makeShadowTree);
+    });
+</script>
+</body>
+</html>
