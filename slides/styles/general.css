@@ -13,4 +13,20 @@ ul.list {
 ul.list img {
     border: none;
     box-shadow: none;
+    vertical-align: middle;
+}
+
+ul.list li.fade {
+    opacity: 0.1;
+}
+
+pre.half {
+    width: 50%;
+   display:inline-block;
+   float:left;
+}
+
+img.left {
+    float: left;
+    display: inline-block;
 }
