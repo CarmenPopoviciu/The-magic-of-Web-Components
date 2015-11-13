@@ -28,6 +28,7 @@
         function makeShadowTree(storyList) {
             var root;
             if(storyList.attachShadow) {
+                // Safari nightly
                 root = storyList.attachShadow({mode: 'open'});
             } else {
                 root = storyList.createShadowRoot();

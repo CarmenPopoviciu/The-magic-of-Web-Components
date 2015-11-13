@@ -17,16 +17,11 @@
                 <!-- INTRO @Carmen -->
                 <section data-background="images/Sword_In_the_Stone_Castle.jpg">
                     <h2 class="light">The Magic of Web Components</h2>
-                    <h4 class="fragment">- with chocolate sprinkles on top -</h4>
                 </section>
 
                 <!-- WEB COMPONENTS @Remco -->
                     <!-- WEB COMPONENTS: why? -->
                     <!-- WEB COMPONENTS: Short overview -->
-
-                <section>
-                    <h2>Why?</h2>
-                </section>
 
                 <section data-background="images/sugarpot.gif"></section>
 
@@ -80,29 +75,85 @@
 
                 <!-- CUSTOM ELEMENTS @Carmen -->
                     <section>
-                        <h1>Custom Element Lifecycle</h1>
+                        <h2>Web Components</h2>
+                        <ul class="list">
+                            <li>
+                                <img src="images/icon-customelements.png">
+                                <span>Custom Elements</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-templates.png">
+                                <span>Templates</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-shadowdom.png">
+                                <span>Shadow Dom</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-htmlimports.png">
+                                <span>HTML Imports</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h1>Custom Elements</h1>
+                        Allow you to extend the HTML vocabulary and define your own, new, fully-featured DOM elements
+                    </section>
+
+                    <section>
+                        <h2>Why Custom Elements?</h2>
+                        <div class="fragment">2 words</div>
+                    </section>
+
+                    <section>
+                        <h2>Sexy Markup!!!</h2>
+                        <img src="images/sexy-markup.gif">
+                    </section>
+
+                    <section>
+                        <h2>Custom Elements give you</h2>
+                        <p>
+                            <span class="fragment"><strong> declarative</strong>,</span>
+                            <span class="fragment"><strong> readable</strong>,</span>
+                            <span class="fragment"><strong> meaningful</strong>,</span>
+                            <span class="fragment"><strong> reusable</strong>,</span>
+                            <span class="fragment"><strong>self sustainable</strong></span>
+                            <span class="fragment">HTML Elements</span>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Custom Element Lifecycle</h2>
                         <ul>
-                            <li>Create</li>
-                            <li>Register</li>
-                            <li>Instantiate</li>
-                            <li>Insert</li>
-                            <li>Remove</li>
-                            <li>Attribute changes</li>
-                            <li>Extend other elements (is??)</li>
+                            <li class="fragment">Create</li>
+                            <li class="fragment">Register</li>
+                            <li class="fragment">Instantiate</li>
                         </ul>
                     </section>
 
                 <!-- TEMPLATES @Remco -->
-                    <!--<section>-->
-                        <!--<ul>-->
-                            <!--<li>What</li>-->
-                            <!--<li>Why</li>-->
-                            <!--<li>Declare</li>-->
-                            <!--<li>Activate</li>-->
-                            <!--<li>Talk about the diff between importNode() & cloneNode()</li>-->
-                            <!--<li>Link not possible within template, @import is however a workaround</li>-->
-                        <!--</ul>-->
-                    <!--</section>-->
+                    <section>
+                        <h2>Web Components</h2>
+                        <ul class="list">
+                            <li>
+                                <img src="images/icon-customelements.png">
+                                <span>Custom Elements</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-templates.png">
+                                <span>Templates</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-shadowdom.png">
+                                <span>Shadow Dom</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-htmlimports.png">
+                                <span>HTML Imports</span>
+                            </li>
+                        </ul>
+                    </section>
 
                     <section>
                         <h1>Templates</h1>
@@ -119,7 +170,7 @@
                     </section>
 
                     <section>
-                        <h3>Important to remember!</h3>
+                        <h2>Important to remember!</h2>
                         <ul class="text-left">
                             <li class="fragment">Parsed as HTML</li>
                             <li class="fragment">Not rendered</li>
@@ -131,7 +182,7 @@
                     <section>
                         <h3>How does a template look?</h3>
                         <pre>
-                            <code>
+                            <code class="hljs html">
 &lt;template id="example">
     &lt;style>
     &lt;/style>
@@ -147,7 +198,7 @@
                     <section>
                         <h3>Enable a template</h3>
                         <pre>
-                            <code>
+                            <code class="javascript">
 var shadow = this.createShadowRoot(); //Create shadowdom
 
 var template = importDoc.querySelector('#example'); //Import the template
@@ -159,16 +210,16 @@ shadow.appendChild(node); //Append node to the shadowtree
                         </pre>
                     </section>
 
-                    <section>
+                    <!--<section>
                         <h3>CloneNode() vs. ImportNode()</h3>
                         <p class="fragment">CloneNode() the node document is updated when the nodes are appended with appendChild()</p>
                         <p class="fragment">Document.importNode() the node document is updated when the nodes are cloned.</p>
-                    </section>
+                    </section>-->
 
                     <section>
                         <h3>CSS in templates</h3>
                         <pre>
-                            <code>
+                            <code class="html">
 &lt;template id="example">
     &lt;style>
         span { color: red; }
@@ -185,7 +236,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                     <section>
                         <h3>CSS in templates</h3>
                         <p>Sadly &lt;link> doesn't work...</p>
-                        <img class="fragment" src="images/angrymerlin.jpg">
+                        <img src="images/angrymerlin.jpg">
                     </section>
 
 
@@ -193,21 +244,31 @@ shadow.appendChild(node); //Append node to the shadowtree
                     <section>
                         <h3>CSS in templates</h3>
                         <p>&lt;style> @import "includes/template.css"; &lt;/style> does work!</p>
-                        <img class="fragment" src="images/happy-merlin.gif">
+                        <img src="images/happy-merlin.gif">
                     </section>
 
                 <!-- SHADOW DOM @Remco -->
-                    <!--<section>-->
-                        <!--<ul>-->
-                            <!--<li>What</li>-->
-                            <!--<li>Why</li>-->
-                            <!--<li>Clarify related terms: document tree/shadow tree/shadow host/shadow root/etc</li>-->
-                            <!--<li>tree diagram / html code in parallel</li>-->
-                            <!--<li>insertion points</li>-->
-                            <!--<li>CSS</li>-->
-                            <!--<li>?????</li>-->
-                        <!--</ul>-->
-                    <!--</section>-->
+                    <section>
+                        <h2>Web Components</h2>
+                        <ul class="list">
+                            <li>
+                                <img src="images/icon-customelements.png">
+                                <span>Custom Elements</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-templates.png">
+                                <span>Templates</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-shadowdom.png">
+                                <span>Shadow Dom</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-htmlimports.png">
+                                <span>HTML Imports</span>
+                            </li>
+                        </ul>
+                    </section>
 
                     <section data-background="#545453" class="shadow-dom">
                         <h1>Shadow Dom</h1>
@@ -215,7 +276,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                     </section>
 
                     <section data-background="#545453" class="shadow-dom">
-                        <h3>Shadow Dom</h3>
+                        <h3>Why Shadow Dom?</h3>
                         <ul>
                             <li class="fragment">Style Encapsulation</li>
                             <li class="fragment">Event Re-Targeting</li>
@@ -224,7 +285,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                     </section>
 
                     <section data-background="#545453" class="shadow-dom">
-                        <h3>Shadow Dom</h3>
+                        <h3>Shadow Dom Concepts</h3>
                         <ul>
                             <li class="fragment">Document tree</li>
                             <li class="fragment">Shadow tree</li>
@@ -282,6 +343,28 @@ root = element.createShadowRoot({ mode: 'closed' });
 
                 <!-- HTML IMPORTS @Carmen -->
                     <section>
+                        <h2>Web Components</h2>
+                        <ul class="list">
+                            <li>
+                                <img src="images/icon-customelements.png">
+                                <span>Custom Elements</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-templates.png">
+                                <span>Templates</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-shadowdom.png">
+                                <span>Shadow Dom</span>
+                            </li>
+                            <li>
+                                <img src="images/icon-htmlimports.png">
+                                <span>HTML Imports</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
                         <ul>
                             <li>What</li>
                             <li>Why</li>
@@ -290,12 +373,6 @@ root = element.createShadowRoot({ mode: 'closed' });
                             <li>????</li>
                         </ul>
                     </section>
-
-                <!-- LIVE DEMO -->
-                <section>
-                    <h1>DEMO TIME</h1>
-                    <p> <==[] </p>
-                </section>
 
                 <!-- BROWSER SUPPORT @Remco -->
                 <section>
@@ -309,6 +386,13 @@ root = element.createShadowRoot({ mode: 'closed' });
                     <p>However sadly this is not the entire truth</p>
                     <img class="fragment" src="images/angry-merlin.gif">
                 </section>
+
+                <!-- LIVE DEMO -->
+                <section>
+                    <h1>DEMO TIME</h1>
+                    <p> <==[] </p>
+                </section>
+
 
                 <!-- LIBS & POLYFILLS @Carmen -->
                 <section>

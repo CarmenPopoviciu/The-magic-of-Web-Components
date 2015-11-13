@@ -6,6 +6,9 @@
             Hi! My name is 111
         </div>
         <div class="name">
+            <!-- official spec. only implemented in Safari nightly
+                <slot name="merlin"></slot>
+            -->
             <content></content>
         </div>
     </div>
@@ -13,7 +16,12 @@
 <body>
 <div class="web-component">
     <label>name-badge</label>
-    <name-badge>Merlin</name-badge>
+    <name-badge>
+        <!-- official spec. only implemented in Safari nightly
+        <span slot="merlin">Merlin</slot>
+        -->
+        <span>Merlin</span>
+    </name-badge>
 </div>
 
 <script src="includes/template.js"></script>
