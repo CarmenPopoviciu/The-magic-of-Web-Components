@@ -15,24 +15,50 @@
         <div class="reveal">
             <div class="slides">
                 <!-- INTRO @Carmen -->
-                <section>
-                    <h2>The Magic of Web Components</h2>
+                <section data-background="images/Sword_In_the_Stone_Castle.jpg">
+                    <h2 class="light">The Magic of Web Components</h2>
                     <h4 class="fragment">- with chocolate sprinkles on top -</h4>
                 </section>
 
                 <!-- WEB COMPONENTS @Remco -->
                     <!-- WEB COMPONENTS: why? -->
                     <!-- WEB COMPONENTS: Short overview -->
+
+                <section>
+                    <h2>Why?</h2>
+                </section>
+
+                <section data-background="images/sugarpot.gif"></section>
+
+                <section>
+                    <pre>
+                        <code>
+&lt;div class="merlin">
+    &lt;div class="another-class">
+        &lt;div class="and-another-class">
+            &lt;div class="phew-are-we-there-yet">
+                &lt;div class="aaaand-another-class">
+                    &lt;div class="this-will-never-end-right">
+                        &lt;div>o_O&lt;/div>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    &lt;/div>
+&lt;/div>
+                        </code>
+                    </pre>
+                </section>
                 <section>
                     <h2>Web Components</h2>
-                    In a nutshell, Web Components allow us to encapsulate and share reusable widgets.
+                    <blockquote>In a nutshell, Web Components allow us to encapsulate and share reusable widgets.
                     The main idea is to been able to bundle markup and styles to create custom components,
-                    all the code will be hidden from the outside world, the markup and the styles will be isolated.
+                    all the code will be hidden from the outside world, the markup and the styles will be isolated.</blockquote>
                 </section>
 
                 <section>
                     <h2>Web Components</h2>
-                    <ul>
+                    <ul class="list">
                         <li class="fragment">
                             <img src="images/icon-customelements.png">
                             <span>Custom Elements</span>
@@ -159,13 +185,15 @@ shadow.appendChild(node); //Append node to the shadowtree
                     <section>
                         <h3>CSS in templates</h3>
                         <p>Sadly &lt;link> doesn't work...</p>
-                        <!-- sad merlin -->
+                        <img class="fragment" src="images/angrymerlin.jpg">
                     </section>
+
+
 
                     <section>
                         <h3>CSS in templates</h3>
                         <p>&lt;style> @import "includes/template.css"; &lt;/style> does work!</p>
-                        <!-- happy merlin -->
+                        <img class="fragment" src="images/happy-merlin.gif">
                     </section>
 
                 <!-- SHADOW DOM @Remco -->
@@ -181,12 +209,12 @@ shadow.appendChild(node); //Append node to the shadowtree
                         <!--</ul>-->
                     <!--</section>-->
 
-                    <section>
+                    <section data-background="#545453" class="shadow-dom">
                         <h1>Shadow Dom</h1>
                         Encapsulates and hides the innards of a custom element inside a nested document.
                     </section>
 
-                    <section>
+                    <section data-background="#545453" class="shadow-dom">
                         <h3>Shadow Dom</h3>
                         <ul>
                             <li class="fragment">Style Encapsulation</li>
@@ -195,7 +223,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                         </ul>
                     </section>
 
-                    <section>
+                    <section data-background="#545453" class="shadow-dom">
                         <h3>Shadow Dom</h3>
                         <ul>
                             <li class="fragment">Document tree</li>
@@ -216,7 +244,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                         <img src="images/shadow-render.svg">
                     </section>
 
-                    <section>
+                    <section data-background="#545453" class="shadow-dom">
                         <h3>Activate the shadow dom</h3>
                         <pre>
                             <code>
@@ -224,7 +252,8 @@ root = element.createShadowRoot({ mode: ... });
                             </code>
                         </pre>
                     </section>
-                    <section>
+
+                    <section data-background="#545453" class="shadow-dom">
                         <h3>'closed' vs. 'open'</h3>
                         <pre class="fragment">
                             <code>
@@ -235,7 +264,7 @@ root = element.createShadowRoot({ mode: 'closed' });
                         </pre>
                     </section>
 
-                    <section>
+                    <section data-background="#545453" class="shadow-dom">
                         <h3>Slot</h3>
                         <pre>
                             <code>
@@ -248,7 +277,7 @@ root = element.createShadowRoot({ mode: 'closed' });
 
                 <section>
                     <h3>Slot</h3>
-                    <img src="images/slotting.svg">
+                    <img height="500px" src="images/slotting.svg">
                 </section>
 
                 <!-- HTML IMPORTS @Carmen -->
@@ -278,6 +307,7 @@ root = element.createShadowRoot({ mode: 'closed' });
                 <section>
                     <h2>Browser Support</h2>
                     <p>However sadly this is not the entire truth</p>
+                    <img class="fragment" src="images/angry-merlin.gif">
                 </section>
 
                 <!-- LIBS & POLYFILLS @Carmen -->
