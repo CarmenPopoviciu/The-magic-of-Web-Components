@@ -23,6 +23,34 @@
                 <!-- WEB COMPONENTS @Remco -->
                     <!-- WEB COMPONENTS: why? -->
                     <!-- WEB COMPONENTS: Short overview -->
+                <section>
+                    <h2>Web Components</h2>
+                    In a nutshell, Web Components allow us to encapsulate and share reusable widgets.
+                    The main idea is to been able to bundle markup and styles to create custom components,
+                    all the code will be hidden from the outside world, the markup and the styles will be isolated.
+                </section>
+
+                <section>
+                    <h2>Web Components</h2>
+                    <ul>
+                        <li class="fragment">
+                            <img src="images/icon-customelements.png">
+                            <span>Custom Elements</span>
+                        </li>
+                        <li class="fragment">
+                            <img src="images/icon-templates.png">
+                            <span>Templates</span>
+                        </li>
+                        <li class="fragment">
+                            <img src="images/icon-shadowdom.png">
+                            <span>Shadow Dom</span>
+                        </li>
+                        <li class="fragment">
+                            <img src="images/icon-htmlimports.png">
+                            <span>HTML Imports</span>
+                        </li>
+                    </ul>
+                </section>
 
                 <!-- CUSTOM ELEMENTS @Carmen -->
                     <section>
@@ -39,28 +67,189 @@
                     </section>
 
                 <!-- TEMPLATES @Remco -->
+                    <!--<section>-->
+                        <!--<ul>-->
+                            <!--<li>What</li>-->
+                            <!--<li>Why</li>-->
+                            <!--<li>Declare</li>-->
+                            <!--<li>Activate</li>-->
+                            <!--<li>Talk about the diff between importNode() & cloneNode()</li>-->
+                            <!--<li>Link not possible within template, @import is however a workaround</li>-->
+                        <!--</ul>-->
+                    <!--</section>-->
+
                     <section>
+                        <h1>Templates</h1>
+                        Enable you to store HTML data inside an HTML document. The content of a &lt;template&gt;
+                        element is parsed without interpreting it (no loading of images etc.).
+                    </section>
+
+                    <section>
+                        <h2>Why do we want templates?</h2>
                         <ul>
-                            <li>What</li>
-                            <li>Why</li>
-                            <li>Declare</li>
-                            <li>Activate</li>
-                            <li>Talk about the diff between importNode() & cloneNode()</li>
+                            <li class="fragment">Separation of concerns</li>
+                            <li class="fragment">Cloneable so reusable</li>
                         </ul>
                     </section>
 
-                <!-- SHADOW DOM @Remco -->
                     <section>
-                        <ul>
-                            <li>What</li>
-                            <li>Why</li>
-                            <li>Clarify related terms: document tree/shadow tree/shadow host/shadow root/etc</li>
-                            <li>tree diagram / html code in parallel</li>
-                            <li>insertion points</li>
-                            <li>CSS</li>
-                            <li>?????</li>
+                        <h3>Important to remember!</h3>
+                        <ul class="text-left">
+                            <li class="fragment">Parsed as HTML</li>
+                            <li class="fragment">Not rendered</li>
+                            <li class="fragment">Can be cloned</li>
+                            <li class="fragment">Instantiated at runtime when the user wants it</li>
                         </ul>
                     </section>
+
+                    <section>
+                        <h3>How does a template look?</h3>
+                        <pre>
+                            <code>
+&lt;template id="example">
+    &lt;style>
+    &lt;/style>
+    &lt;div class="outer">
+        &lt;span>An Example&lt;/span>
+    &lt;/div>
+    &lt;script>&lt;/script>
+&lt;/template>
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Enable a template</h3>
+                        <pre>
+                            <code>
+var shadow = this.createShadowRoot(); //Create shadowdom
+
+var template = importDoc.querySelector('#example'); //Import the template
+
+var node = template.content.cloneNode(true); //Clone the template
+
+shadow.appendChild(node); //Append node to the shadowtree
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>CloneNode() vs. ImportNode()</h3>
+                        <p class="fragment">CloneNode() the node document is updated when the nodes are appended with appendChild()</p>
+                        <p class="fragment">Document.importNode() the node document is updated when the nodes are cloned.</p>
+                    </section>
+
+                    <section>
+                        <h3>CSS in templates</h3>
+                        <pre>
+                            <code>
+&lt;template id="example">
+    &lt;style>
+        span { color: red; }
+    &lt;/style>
+    &lt;div class="outer">
+        &lt;span>An Example&lt;/span>
+    &lt;/div>
+    &lt;script>&lt;/script>
+&lt;/template>
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>CSS in templates</h3>
+                        <p>Sadly &lt;link> doesn't work...</p>
+                        <!-- sad merlin -->
+                    </section>
+
+                    <section>
+                        <h3>CSS in templates</h3>
+                        <p>&lt;style> @import "includes/template.css"; &lt;/style> does work!</p>
+                        <!-- happy merlin -->
+                    </section>
+
+                <!-- SHADOW DOM @Remco -->
+                    <!--<section>-->
+                        <!--<ul>-->
+                            <!--<li>What</li>-->
+                            <!--<li>Why</li>-->
+                            <!--<li>Clarify related terms: document tree/shadow tree/shadow host/shadow root/etc</li>-->
+                            <!--<li>tree diagram / html code in parallel</li>-->
+                            <!--<li>insertion points</li>-->
+                            <!--<li>CSS</li>-->
+                            <!--<li>?????</li>-->
+                        <!--</ul>-->
+                    <!--</section>-->
+
+                    <section>
+                        <h1>Shadow Dom</h1>
+                        Encapsulates and hides the innards of a custom element inside a nested document.
+                    </section>
+
+                    <section>
+                        <h3>Shadow Dom</h3>
+                        <ul>
+                            <li class="fragment">Style Encapsulation</li>
+                            <li class="fragment">Event Re-Targeting</li>
+                            <li class="fragment">Separation of Concerns</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Shadow Dom</h3>
+                        <ul>
+                            <li class="fragment">Document tree</li>
+                            <li class="fragment">Shadow tree</li>
+                            <li class="fragment">Shadow host</li>
+                            <li class="fragment">Shadow root</li>
+                            <li class="fragment">Shadow boundary</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Overview</h3>
+                        <img src="images/shadow-tree.svg">
+                    </section>
+
+                    <section>
+                        <h3>Overview</h3>
+                        <img src="images/shadow-render.svg">
+                    </section>
+
+                    <section>
+                        <h3>Activate the shadow dom</h3>
+                        <pre>
+                            <code>
+root = element.createShadowRoot({ mode: ... });
+                            </code>
+                        </pre>
+                    </section>
+                    <section>
+                        <h3>'closed' vs. 'open'</h3>
+                        <pre class="fragment">
+                            <code>
+root = element.createShadowRoot({ mode: 'open' });
+
+root = element.createShadowRoot({ mode: 'closed' });
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Slot</h3>
+                        <pre>
+                            <code>
+&lt;slot name="example"&gt;&lt;/slot&gt;
+
+&lt;div slot="example"&gt;Example text&lt;/div&gt;
+                            </code>
+                        </pre>
+                    </section>
+
+                <section>
+                    <h3>Slot</h3>
+                    <img src="images/slotting.svg">
+                </section>
 
                 <!-- HTML IMPORTS @Carmen -->
                     <section>
@@ -80,6 +269,16 @@
                 </section>
 
                 <!-- BROWSER SUPPORT @Remco -->
+                <section>
+                    <h2>Browser Support</h2>
+                    <h4>According to webcomponents.org:</h4>
+                    <img src="images/support.PNG">
+                </section>
+
+                <section>
+                    <h2>Browser Support</h2>
+                    <p>However sadly this is not the entire truth</p>
+                </section>
 
                 <!-- LIBS & POLYFILLS @Carmen -->
                 <section>
