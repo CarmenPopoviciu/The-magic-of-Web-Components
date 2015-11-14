@@ -14,3 +14,16 @@ ul.list img {
     border: none;
     box-shadow: none;
 }
+
+section .note {
+    margin-top: 3em;
+    border: 1px solid lightgray;
+    padding: 10px;
+    color: #76A5BE;
+    font-size: 0.8em;
+}
+
+section .list-left {
+    float: left;
+    padding-left: 50px;
+}

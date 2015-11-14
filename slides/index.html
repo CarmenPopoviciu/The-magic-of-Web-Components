@@ -102,6 +102,10 @@
                     </section>
 
                     <section>
+                        <h2>&lt;dom-code&gt;&lt;/dom-code&gt;</h2>
+                    </section>
+
+                    <section>
                         <h2>Why Custom Elements?</h2>
                         <div class="fragment">2 words</div>
                     </section>
@@ -109,6 +113,11 @@
                     <section>
                         <h2>Sexy Markup!!!</h2>
                         <img src="images/sexy-markup.gif">
+                    </section>
+
+                    <section>
+                        <h2>Just kidding ;)</h2>
+                        <h2>That's not the only reason</h2>
                     </section>
 
                     <section>
@@ -125,10 +134,135 @@
 
                     <section>
                         <h2>Custom Element Lifecycle</h2>
-                        <ul>
-                            <li class="fragment">Create</li>
+                        <ul class="list-left">
                             <li class="fragment">Register</li>
                             <li class="fragment">Instantiate</li>
+                            <li class="fragment">Attach/Detach</li>
+                            <li class="fragment">Attribute changes</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Custom Element Registration</h2>
+                        Is the process of adding an <strong>element definition</strong> to a
+                        <strong>registry</strong>
+
+                        <div class="note fragment">
+                            <p><strong>element definition:</strong> type, prototype, lifecycle callbacks ...</p>
+                            <p><strong>registry:</strong> set of element definitions associated to a document</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>Register a Custom Element</h3>
+                        <pre>
+                            <code class="javascript">
+document.registerElement('the-flash', // the type
+    {
+      // the prototype. HTMLElement/SVGElement by default
+      prototype: Object.create(HTMLElement.prototype)
+    }
+); // returns a constructor function
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>Custom Elements with public APIs</h3>
+                            <pre>
+                                <code class="javascript">
+var FlashProto = Object.create(HTMLElement.prototype);
+// Public API
+FlashProto.runFast = function() {
+  console.log('Run Flash, run!');
+};
+
+document.registerElement('the-flash', {
+    prototype: FlashProto
+});
+                                </code>
+                            </pre>
+                    </section>
+
+                    <section>
+                        <h3>Custom Tag Elements vs. Type Extension Elements</h3>
+                                <pre>
+                                    <code class="javascript">
+// custom tag
+document.registerElement('the-flash', {
+    prototype: Object.create(HTMLElement.prototype)
+});
+
+// type extension
+document.registerElement('super-flash', {
+    prototype: Object.create(HTMLElement.prototype),
+    extends: 'the-flash'
+});
+                                    </code>
+                                </pre>
+                    </section>
+
+                    <section>
+                        <h3>Instantiating Custom Tag Elements</h3>
+                            <pre>
+                                <code class="html">
+// HTML
+&lt;the-flash&gt;&lt;/the-flash&gt;
+                                </code>
+                            </pre>
+
+                            <pre>
+                                <code class="javascript">
+// JS
+var flash = document.createElement('the-flash');
+
+// or
+
+var flash = new TheFlash();
+                                </code>
+                            </pre>
+                    </section>
+
+                    <section>
+                        <h3>Instantiating Extension Type Elements</h3>
+                                <pre>
+                                    <code class="html">
+// HTML
+&lt;the-flash is="super-flash"&gt;&lt;/the-flash&gt;
+                                    </code>
+                                </pre>
+
+                                <pre>
+                                    <code class="javascript">
+// JS
+var superFlash = document.createElement('the-flash', 'super-flash');
+
+// or
+
+var superFlash = new SuperFlash();
+                                    </code>
+                                </pre>
+                    </section>
+
+                    <section>
+                        <h3>Lifecycle callbacks</h3>
+                        <ul>
+                            <li>
+                                <span><strong>createdCallback</strong></span>
+                                <span style="font-size: 26px;"> (instance was created and its definition was registered)</span>
+                            </li>
+                            <li>
+                                <span><strong>attachedCallback</strong></span>
+                                <span style="font-size: 26px;"> (element was inserted into the document)</span>
+                            </li>
+                            <li>
+                                <span><strong>detachedCallback</strong></span>
+                                <span style="font-size: 26px;"> (element was removed from the document)</span>
+                            </li>
+                            <li>
+                                <span><strong>attributeChangedCallback</strong></span>
+                                <span style="font-size: 26px;"> (element's attribute was added, changed or removed)</span>
+                            </li>
                         </ul>
                     </section>
 

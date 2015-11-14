@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Magic of Web Components - Custom Elements Examples</title>
+    </head>
+
+    <body>
+        <script>
+            var TheFlashProto = Object.create(HTMLElement.prototype);
+
+            // add some content
+            TheFlashProto.createdCallback = function() {
+                var img = this.getAttribute('img');
+                var content =
+                        '<div>' +
+                                '<img>' +
+                                '<h3>I am Flash and my super power is speed</h3>' +
+                                '</div>';
+                this.innerHTML = content;
+                this.querySelector('img').src = img;
+            };
+
+            document.registerElement('the-flash', {
+                prototype: TheFlashProto
+            });
+        </script>
+
+        <the-flash img="../../slides/images/flash-in-action.png"></the-flash>
+    </body>
+</html>
