@@ -297,7 +297,7 @@ var superFlash = new SuperFlash();
 
                     <section>
                         <h2>Why do we want templates?</h2>
-                        <ul>
+                        <ul class="list-left">
                             <li class="fragment">Separation of concerns</li>
                             <li class="fragment">Cloneable so reusable</li>
                         </ul>
@@ -482,7 +482,7 @@ Document tree
                 </section>
 
                 <section>
-                    <img height="400px" class="left" src="images/shadow-dom.png">
+                    <img height="400px" class="left" src="images/shadow-dom.png" style="margin-top: 45px;">
                     <pre class="half">
                         <code class="html">
 &lt;body>
@@ -529,13 +529,49 @@ Document tree
                     </section>
 
                     <section>
-                        <ul>
-                            <li>What</li>
-                            <li>Why</li>
-                            <li>Syntax</li>
-                            <li>Access content from the import</li>
-                            <li>????</li>
+                        <h2>HTML Imports</h2>
+                        is a way to include HTML documents in other HTML documents
+                    </section>
+
+                    <section>
+                        <h2>Why HTML Imports</h2>
+                        <p>Most of the web's content has a simple and declarative way to load itself except HTML</p>
+                        <ul class="list-left">
+                            <li class="fragment">JS has &lt;script&gt;</li>
+                            <li class="fragment">CSS has &lt;link rel="stylesheet"&gt;</li>
+                            <li class="fragment">Video has &lt;video&gt;</li>
+                            <li class="fragment">etc.</li>
                         </ul>
+                    </section>
+
+                    <section>
+                        <h3>Declaring HTML Imports</h3>
+                        <pre>
+                            <code>
+&lt;head&gt;
+  &lt;link rel="import" href="/path/my-html.html"&gt;
+&lt;/head&gt;
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h3>HTML Imports Concepts</h3>
+                        <ul>
+                            <li><strong>Import Referrer - </strong>the document that links to an import</li>
+                            <li class="fragment"><strong>Import location - </strong>the URL of the import</li>
+                            <li class="fragment"><strong>Imported document - </strong>the Document that represents the import in the import referrer</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>link.import</h3>
+                        Including an <strong>import</strong> on a page returns a Document not its content
+                        <pre>
+                            <code class="javascript">
+var content = document.querySelector('link[rel="import"]').import;
+                            </code>
+                        </pre>
                     </section>
 
                 <!-- BROWSER SUPPORT @Remco -->
@@ -560,13 +596,15 @@ Document tree
 
                 <!-- LIBS & POLYFILLS @Carmen -->
                 <section>
-                    <ul>
-                        <li>Polymer, etc etc</li>
-                        <li>webcomponents.js polyfill</li>
-                    </ul>
+                    <h2>Libraries and Polyfills</h2>
+                    <img>
+                    <img>
                 </section>
 
                 <!-- OUTRO @Carmen -->
+                <section>
+                    <h1>Thank you!</h1>
+                </section>
             </div>
         </div>
 
