@@ -46,9 +46,9 @@
                 </section>
                 <section>
                     <h2>Web Components</h2>
-                    <blockquote>In a nutshell, Web Components allow us to encapsulate and share reusable widgets.
-                    The main idea is to been able to bundle markup and styles to create custom components,
-                    all the code will be hidden from the outside world, the markup and the styles will be isolated.</blockquote>
+                    <blockquote>In a nutshell, Web Components are a standard that allows us to encapsulate and share reusable widgets.
+                        The idea is to bundle and isolate markup and style together as custom components.
+                    </blockquote>
                 </section>
 
                 <section>
@@ -81,15 +81,15 @@
                                 <img src="images/icon-customelements.png">
                                 <span>Custom Elements</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-templates.png">
                                 <span>Templates</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-shadowdom.png">
                                 <span>Shadow Dom</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-htmlimports.png">
                                 <span>HTML Imports</span>
                             </li>
@@ -270,7 +270,7 @@ var superFlash = new SuperFlash();
                     <section>
                         <h2>Web Components</h2>
                         <ul class="list">
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-customelements.png">
                                 <span>Custom Elements</span>
                             </li>
@@ -278,11 +278,11 @@ var superFlash = new SuperFlash();
                                 <img src="images/icon-templates.png">
                                 <span>Templates</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-shadowdom.png">
                                 <span>Shadow Dom</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-htmlimports.png">
                                 <span>HTML Imports</span>
                             </li>
@@ -333,13 +333,14 @@ var superFlash = new SuperFlash();
                         <h3>Enable a template</h3>
                         <pre>
                             <code class="javascript">
-var shadow = this.createShadowRoot(); //Create shadowdom
-
-var template = importDoc.querySelector('#example'); //Import the template
-
-var node = template.content.cloneNode(true); //Clone the template
-
-shadow.appendChild(node); //Append node to the shadowtree
+//Create shadowdom
+var shadow = this.createShadowRoot();
+//Import the template
+var template = importDoc.querySelector('#example');
+//Clone the template
+var node = template.content.cloneNode(true);
+//Append node to the shadowtree
+shadow.appendChild(node);
                             </code>
                         </pre>
                     </section>
@@ -385,11 +386,11 @@ shadow.appendChild(node); //Append node to the shadowtree
                     <section>
                         <h2>Web Components</h2>
                         <ul class="list">
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-customelements.png">
                                 <span>Custom Elements</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-templates.png">
                                 <span>Templates</span>
                             </li>
@@ -397,7 +398,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                                 <img src="images/icon-shadowdom.png">
                                 <span>Shadow Dom</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-htmlimports.png">
                                 <span>HTML Imports</span>
                             </li>
@@ -413,7 +414,7 @@ shadow.appendChild(node); //Append node to the shadowtree
                         <h3>Why Shadow Dom?</h3>
                         <ul>
                             <li class="fragment">Style Encapsulation</li>
-                            <li class="fragment">Event Re-Targeting</li>
+                            <li class="fragment">Script scoping</li>
                             <li class="fragment">Separation of Concerns</li>
                         </ul>
                     </section>
@@ -421,11 +422,11 @@ shadow.appendChild(node); //Append node to the shadowtree
                     <section data-background="#545453" class="shadow-dom">
                         <h3>Shadow Dom Concepts</h3>
                         <ul>
-                            <li class="fragment">Document tree</li>
-                            <li class="fragment">Shadow tree</li>
-                            <li class="fragment">Shadow host</li>
-                            <li class="fragment">Shadow root</li>
-                            <li class="fragment">Shadow boundary</li>
+                            <li class="fragment">Document tree - a node tree whose root node is a document.</li>
+                            <li class="fragment">Shadow host - element that hosts one shadow tree</li>
+                            <li class="fragment">Shadow tree - a node tree hosted by a shadow host</li>
+                            <li class="fragment">Shadow root - the root node of a shadow tree</li>
+                            <li class="fragment">Shadow boundary - the invisible barrier that encapsulates scripts and css</li>
                         </ul>
                     </section>
 
@@ -461,10 +462,15 @@ root = element.createShadowRoot({ mode: 'closed' });
 
                     <section data-background="#545453" class="shadow-dom">
                         <h3>Slot</h3>
-                        <pre>
-                            <code>
+                        <pre class="half">
+Shadow Tree
+                            <code class="html">
 &lt;slot name="example"&gt;&lt;/slot&gt;
-
+                            </code>
+                            </pre>
+                        <pre class="half">
+Document tree
+                            <code class="html">
 &lt;div slot="example"&gt;Example text&lt;/div&gt;
                             </code>
                         </pre>
@@ -475,19 +481,43 @@ root = element.createShadowRoot({ mode: 'closed' });
                     <img height="500px" src="images/slotting.svg">
                 </section>
 
+                <section>
+                    <img height="400px" class="left" src="images/shadow-dom.png">
+                    <pre class="half">
+                        <code class="html">
+&lt;body>
+    &lt;shadowHostBC>
+        &lt;div>&lt;/div>
+        &lt;div>&lt;/div>
+        &lt;div>&lt;/div>
+        &lt;div>&lt;/div>
+        &lt;div>&lt;/div>
+    &lt;/shadowHostBC>
+    &lt;div>
+        &lt;shadowHostD>
+            &lt;div>&lt;/div>
+            &lt;div>&lt;/div>
+        &lt;/shadowHostD>
+        &lt;div>&lt;/div>
+    &lt;/div>
+&lt;/body>
+                        </code>
+                    </pre>
+                </section>
+
                 <!-- HTML IMPORTS @Carmen -->
                     <section>
                         <h2>Web Components</h2>
                         <ul class="list">
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-customelements.png">
                                 <span>Custom Elements</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-templates.png">
                                 <span>Templates</span>
                             </li>
-                            <li>
+                            <li class="fade">
                                 <img src="images/icon-shadowdom.png">
                                 <span>Shadow Dom</span>
                             </li>
