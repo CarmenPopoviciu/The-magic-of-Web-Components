@@ -15,35 +15,76 @@
         <div class="reveal">
             <div class="slides">
                 <!-- INTRO @Carmen -->
-                <section data-background="images/Sword_In_the_Stone_Castle.jpg">
-                    <h2 class="light">The Magic of Web Components</h2>
+                <section data-background="images/Sword_In_the_Stone_Castle.jpg" style="color: white;">
+                    <h1 style="color: white;">The Magic of Web Components</h1>
+                    <div class="profile">
+                        <img src="images/carmen-profile.jpg" style="border-radius: 2em; width: 3em;">
+                        @CarmenPopoviciu
+                    </div>
+
+                    <div class="profile">
+                        <img src="images/remco-profile.jpg" style="border-radius: 2em; width: 3em;">
+                        @remcoGubbels
+                    </div>
                 </section>
 
                 <!-- WEB COMPONENTS @Remco -->
                     <!-- WEB COMPONENTS: why? -->
                     <!-- WEB COMPONENTS: Short overview -->
 
-                <section data-background="images/sugarpot.gif"></section>
-
                 <section>
+                    <h3>Imagine you have this</h3>
                     <pre>
                         <code>
-&lt;div class="merlin">
-    &lt;div class="another-class">
-        &lt;div class="and-another-class">
-            &lt;div class="phew-are-we-there-yet">
-                &lt;div class="aaaand-another-class">
-                    &lt;div class="this-will-never-end-right">
-                        &lt;div>o_O&lt;/div>
-                    &lt;/div>
-                &lt;/div>
-            &lt;/div>
-        &lt;/div>
-    &lt;/div>
-&lt;/div>
+&lt;div class="merlin"&gt;
+    &lt;div class="another-class"&gt;
+        &lt;div class="and-another-class"&gt;
+            &lt;div class="phew-are-we-there-yet"&gt;
+                &lt;div class="aaaand-another-class"&gt;
+                    &lt;div class="this-will-never-end-right"&gt;
+                        &lt;di&gt;>o_O&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
                         </code>
                     </pre>
                 </section>
+
+                <section data-background="images/sugarpot1.gif"></section>
+
+                <section>
+                    <pre>
+                        <code style="max-height: 500px;">
+&lt;div class="merlin"&gt;
+    &lt;div class="another-class"&gt;
+        &lt;div class="and-another-class"&gt;
+            &lt;div class="phew-are-we-there-yet"&gt;
+                &lt;div class="aaaand-another-class"&gt;
+                    &lt;div class="this-will-never-end-right"&gt;
+                        &lt;div&gt;o_O
+                            &lt;div class="arthur"&gt;
+                                &lt;div class="richard"&gt;
+                                    &lt;div class="archimedes"&gt;:(&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+                        </code>
+                    </pre>
+                </section>
+
+                <section data-background="images/sugarpot.gif"></section>
+
+                <section data-background="images/happy-sugarpot.jpg"></section>
+
                 <section>
                     <h2>Web Components</h2>
                     <blockquote>In a nutshell, Web Components are a standard that allows us to encapsulate and share reusable widgets.
@@ -157,7 +198,7 @@
                         <h3>Register a Custom Element</h3>
                         <pre>
                             <code class="javascript">
-document.registerElement('the-flash', // the type
+document.registerElement('the-merlin', // the type
     {
       // the prototype. HTMLElement/SVGElement by default
       prototype: Object.create(HTMLElement.prototype)
@@ -171,14 +212,14 @@ document.registerElement('the-flash', // the type
                         <h3>Custom Elements with public APIs</h3>
                             <pre>
                                 <code class="javascript">
-var FlashProto = Object.create(HTMLElement.prototype);
+var MerlinProto = Object.create(HTMLElement.prototype);
 // Public API
-FlashProto.runFast = function() {
-  console.log('Run Flash, run!');
+MerlinProto.castSpell = function() {
+  console.log('You have been turned into a frog!');
 };
 
-document.registerElement('the-flash', {
-    prototype: FlashProto
+document.registerElement('the-merlin', {
+    prototype: MerlinProto
 });
                                 </code>
                             </pre>
@@ -189,14 +230,14 @@ document.registerElement('the-flash', {
                                 <pre>
                                     <code class="javascript">
 // custom tag
-document.registerElement('the-flash', {
+document.registerElement('the-merlin', {
     prototype: Object.create(HTMLElement.prototype)
 });
 
 // type extension
-document.registerElement('super-flash', {
+document.registerElement('magnificent-merlin', {
     prototype: Object.create(HTMLElement.prototype),
-    extends: 'the-flash'
+    extends: 'the-merlin'
 });
                                     </code>
                                 </pre>
@@ -207,18 +248,18 @@ document.registerElement('super-flash', {
                             <pre>
                                 <code class="html">
 // HTML
-&lt;the-flash&gt;&lt;/the-flash&gt;
+&lt;the-merlin&gt;&lt;/the-merlin&gt;
                                 </code>
                             </pre>
 
                             <pre>
                                 <code class="javascript">
 // JS
-var flash = document.createElement('the-flash');
+var merlin = document.createElement('the-merlin');
 
 // or
 
-var flash = new TheFlash();
+var merlin = new TheMerlin();
                                 </code>
                             </pre>
                     </section>
@@ -228,18 +269,18 @@ var flash = new TheFlash();
                                 <pre>
                                     <code class="html">
 // HTML
-&lt;the-flash is="super-flash"&gt;&lt;/the-flash&gt;
+&lt;the-merlin is="magnificent-merlin"&gt;&lt;/the-merlin&gt;
                                     </code>
                                 </pre>
 
                                 <pre>
                                     <code class="javascript">
 // JS
-var superFlash = document.createElement('the-flash', 'super-flash');
+var superMerlin = document.createElement('the-merlin', 'magnificent-merlin');
 
 // or
 
-var superFlash = new SuperFlash();
+var superMerlin = new SuperMerlin();
                                     </code>
                                 </pre>
                     </section>
@@ -371,7 +412,7 @@ shadow.appendChild(node);
                     <section>
                         <h3>CSS in templates</h3>
                         <p>Sadly &lt;link> doesn't work...</p>
-                        <img src="images/angrymerlin.jpg">
+                        <img src="images/grumpy-merlin.png">
                     </section>
 
 
@@ -405,12 +446,12 @@ shadow.appendChild(node);
                         </ul>
                     </section>
 
-                    <section data-background="#545453" class="shadow-dom">
+                    <section data-background="rgb(169, 169, 167)">
                         <h1>Shadow Dom</h1>
                         Encapsulates and hides the innards of a custom element inside a nested document.
                     </section>
 
-                    <section data-background="#545453" class="shadow-dom">
+                    <section data-background="rgb(169, 169, 167)">
                         <h3>Why Shadow Dom?</h3>
                         <ul>
                             <li class="fragment">Style Encapsulation</li>
@@ -419,14 +460,14 @@ shadow.appendChild(node);
                         </ul>
                     </section>
 
-                    <section data-background="#545453" class="shadow-dom">
+                    <section data-background="rgb(169, 169, 167)">
                         <h3>Shadow Dom Concepts</h3>
                         <ul>
-                            <li class="fragment">Document tree - a node tree whose root node is a document.</li>
-                            <li class="fragment">Shadow host - element that hosts one shadow tree</li>
-                            <li class="fragment">Shadow tree - a node tree hosted by a shadow host</li>
-                            <li class="fragment">Shadow root - the root node of a shadow tree</li>
-                            <li class="fragment">Shadow boundary - the invisible barrier that encapsulates scripts and css</li>
+                            <li class="fragment"><strong>Document tree</strong> - a node tree whose root node is a document</li>
+                            <li class="fragment"><strong>Shadow host</strong> - element that hosts one shadow tree</li>
+                            <li class="fragment"><strong>Shadow tree</strong> - a node tree hosted by a shadow host</li>
+                            <li class="fragment"><strong>Shadow root</strong> - the root node of a shadow tree</li>
+                            <li class="fragment"><strong>Shadow boundary</strong> - the invisible barrier that encapsulates scripts and css</li>
                         </ul>
                     </section>
 
@@ -440,7 +481,7 @@ shadow.appendChild(node);
                         <img src="images/shadow-render.svg">
                     </section>
 
-                    <section data-background="#545453" class="shadow-dom">
+                    <section data-background="rgb(169, 169, 167)">
                         <h3>Activate the shadow dom</h3>
                         <pre>
                             <code>
@@ -449,10 +490,10 @@ root = element.createShadowRoot({ mode: ... });
                         </pre>
                     </section>
 
-                    <section data-background="#545453" class="shadow-dom">
+                    <section data-background="rgb(169, 169, 167)">
                         <h3>'closed' vs. 'open'</h3>
                         <pre class="fragment">
-                            <code>
+                            <code class="html">
 root = element.createShadowRoot({ mode: 'open' });
 
 root = element.createShadowRoot({ mode: 'closed' });
@@ -460,7 +501,13 @@ root = element.createShadowRoot({ mode: 'closed' });
                         </pre>
                     </section>
 
-                    <section data-background="#545453" class="shadow-dom">
+                    <section>
+                        <h3>Slot</h3>
+                        <img height="500px" src="images/slotting.svg">
+                    </section>
+
+                <section>
+                    <section data-background="rgb(169, 169, 167)">
                         <h3>Slot</h3>
                         <pre class="half">
 Shadow Tree
@@ -475,13 +522,7 @@ Document tree
                             </code>
                         </pre>
                     </section>
-
-                <section>
-                    <h3>Slot</h3>
-                    <img height="500px" src="images/slotting.svg">
-                </section>
-
-                <section>
+                    <section>
                     <img height="400px" class="left" src="images/shadow-dom.png" style="margin-top: 45px;">
                     <pre class="half">
                         <code class="html">
@@ -504,6 +545,8 @@ Document tree
                         </code>
                     </pre>
                 </section>
+                </section>
+
 
                 <!-- HTML IMPORTS @Carmen -->
                     <section>
@@ -577,32 +620,37 @@ var content = document.querySelector('link[rel="import"]').import;
                 <!-- BROWSER SUPPORT @Remco -->
                 <section>
                     <h2>Browser Support</h2>
-                    <h4>According to webcomponents.org:</h4>
-                    <img src="images/support.PNG">
+                    <div class="fragment">
+                        <h4>According to webcomponents.org:</h4>
+                        <img src="images/support.PNG">
+                    </div>
                 </section>
 
                 <section>
-                    <h2>Browser Support</h2>
                     <p>However sadly this is not the entire truth</p>
-                    <img class="fragment" src="images/angry-merlin.gif">
+                    <img src="images/angry-merlin.gif">
                 </section>
-
-                <!-- LIVE DEMO -->
-                <section>
-                    <h1>DEMO TIME</h1>
-                    <p> <==[] </p>
-                </section>
-
 
                 <!-- LIBS & POLYFILLS @Carmen -->
                 <section>
                     <h2>Libraries and Polyfills</h2>
-                    <img>
-                    <img>
+                    <div style="margin-top: 40px;">
+                        <img src="images/icon-polymer.png" style="padding: 15px;">
+                        <img src="images/icon-xtags.png" style="padding: 15px;">
+                        <img src="images/icon-bosonic.png" style="padding: 15px;">
+                        <p>webcomponents.js polyfill</p>
+                    </div>
+                </section>
+
+
+                <!-- LIVE DEMO -->
+                <section>
+                    <h1>DEMO TIME</h1>
                 </section>
 
                 <!-- OUTRO @Carmen -->
                 <section>
+                    <img src="images/dancing-merlin.gif">
                     <h1>Thank you!</h1>
                 </section>
             </div>

@@ -1,0 +1,73 @@
+<template id="dom-code-template">
+    <style>
+        #dom-code
+        {
+            height: 25px;
+            width: 25px;
+            font: bold 22px monospace;
+            letter-spacing: -1.5px;
+            margin-top: 50px;
+
+            animation: animated_div 5s;
+            transform-origin: 50% 50%;
+            -webkit-animation: animated_div 5s forwards;
+            -moz-animation: animated_div 5s forwards;
+            -o-animation: animated_div 5s forwards;
+            -webkit-transform-origin: 50% 50%;
+        }
+
+        @keyframes animated_div
+        {
+            0%	 {transform: rotate(0deg);}
+            45%  {transform: rotate(-90deg);}
+            100% {transform: rotate(-90deg);}
+        }
+
+        @-webkit-keyframes animated_div
+        {
+            0%	 {-webkit-transform: rotate(0deg);}
+            45%	 {-webkit-transform: rotate(-90deg);}
+            100% {-webkit-transform: rotate(-90deg);}
+        }
+
+        @-moz-keyframes animated_div
+        {
+            0%   {-moz-transform: rotate(0deg);}
+            45%  {-moz-transform: rotate(-90deg);}
+            100% {-moz-transform: rotate(-90deg);}
+        }
+
+        @-o-keyframes animated_div
+        {
+            0%   {transform: rotate(0deg);}
+            45%  {transform: rotate(-90deg);}
+            100% {transform: rotate(-90deg);}
+        }
+    </style>
+
+    <div id="dom-code">[]==></div>
+</template>
+
+<script>
+    // thisDoc refers to the "importee", which is dom-code.html
+    // polyfill needs _currentScript instead of currentScript
+    var thisDoc = document._currentScript.ownerDocument;
+
+    // mainDoc refers to the "importer", which is index.html
+    var mainDoc = document;
+
+    var proto = Object.create(HTMLElement.prototype);
+    proto.createdCallback = function() {
+        var shadowRoot = this.createShadowRoot();
+
+        var template = thisDoc.querySelector('#dom-code-template');
+        var clone = thisDoc.importNode(template.content, true);
+
+        shadowRoot.appendChild(clone);
+    };
+
+    mainDoc.registerElement('dom-code', {
+        prototype: proto
+    });
+</script>
+

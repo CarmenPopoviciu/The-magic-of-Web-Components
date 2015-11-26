@@ -3,29 +3,32 @@
     <head>
         <meta charset="UTF-8">
         <title>The Magic of Web Components - Custom Elements Examples</title>
+
+        <!-- polyfill -->
+        <script src="../../webcomponents.min.js"></script>
     </head>
 
     <body>
         <script>
-            var TheFlashProto = Object.create(HTMLElement.prototype);
+            var TheMerlinProto = Object.create(HTMLElement.prototype);
 
             // add some content
-            TheFlashProto.createdCallback = function() {
+            TheMerlinProto.createdCallback = function() {
                 var img = this.getAttribute('img');
                 var content =
                         '<div>' +
                                 '<img>' +
-                                '<h3>I am Flash and my super power is speed</h3>' +
+                                '<h3>Beware of my magical powers</h3>' +
                                 '</div>';
                 this.innerHTML = content;
                 this.querySelector('img').src = img;
             };
 
-            document.registerElement('the-flash', {
-                prototype: TheFlashProto
+            document.registerElement('the-merlin', {
+                prototype: TheMerlinProto
             });
         </script>
 
-        <the-flash img="../../slides/images/flash-in-action.png"></the-flash>
+        <the-merlin img="../../slides/images/bearded-merlin.gif"></the-merlin>
     </body>
 </html>

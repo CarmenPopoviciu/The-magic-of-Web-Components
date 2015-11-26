@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>The Magic of Web Components - Custom Elements Examples</title>
+
+        <!-- polyfill -->
+        <script src="../../webcomponents.min.js"></script>
+    </head>
+
+    <body>
+        <script>
+            var TheMerlinProto = Object.create(HTMLElement.prototype);
+
+            // add some content
+            TheMerlinProto.createdCallback = function() {
+                var content =
+                        '<div>' +
+                            '<img src="../../slides/images/bearded-merlin.gif">' +
+                            '<h3>Beware of my magical powers</h3>' +
+                        '</div>';
+                this.innerHTML = content;
+
+            };
+
+            document.registerElement('the-merlin', {
+                prototype: TheMerlinProto
+            });
+        </script>
+
+        <the-merlin></the-merlin>
+    </body>
+</html>

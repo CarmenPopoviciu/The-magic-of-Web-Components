@@ -31,7 +31,7 @@
 
     function createStyle() {
         var style = document.createElement('style');
-        style.textContent = 'span.merlin { color: var(--text-color); ;font-size: 20px; }' +
+        style.textContent = 'span.merlin { color: var(--text-color, green); ;font-size: 20px; }' +
                 'span.arthur { color: red ;font-size: 20px; }';
         return style;
     }
@@ -39,7 +39,7 @@
     function makeShadowTree(shadow) {
         var root;
         if(shadow.attachShadow) {
-            root = shadow.attachShadow({mode: 'open'});
+            root = shadow.attachShadow({mode: 'closed'});
         } else {
             root = shadow.createShadowRoot();
         }
